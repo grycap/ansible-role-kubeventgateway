@@ -1,0 +1,13 @@
+---
+- name: Create event-gateway namespace
+  command: kubectl create namespace event-gateway
+
+- name: Create etcd statefulset and service
+  block:
+    - copy: src=etcd.yaml dest=/tmp/etcd.yaml
+    - command: kubectl create -f /tmp/etcd.yaml
+
+- name: Create event-gateway deployment and service
+  block:
+    - copy: src=event-gateway.yaml dest=/tmp/event-gateway.yaml
+    - command: kubectl create -f /tmp/event-gateway.yaml
