@@ -37,11 +37,17 @@ metadata:
   name: event-gateway
   namespace: event-gateway
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - name: events
       port: 4000
+      protocol: TCP
+      targetPort: 4000
+      nodePort: 30900
     - name: config
       port: 4001
+      protocol: TCP
+      targetPort: 4001
+      nodePort: 30901
   selector:
     app: event-gateway
