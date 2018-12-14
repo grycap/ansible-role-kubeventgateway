@@ -39,9 +39,10 @@ spec:
     - metadata:
         name: etcd-data
         namespace: event-gateway
-        labels:
-          app: event-gateway
       spec:
+        selector:
+          matchLabels:
+            app: event-gateway
         accessModes:
           - ReadWriteOnce
         resources:
