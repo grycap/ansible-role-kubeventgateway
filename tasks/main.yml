@@ -11,5 +11,5 @@
 
 - name: Create event-gateway deployment and service
   block:
-    - copy: src=event-gateway.yaml dest=/tmp/event-gateway.yaml
+    - template: src=event-gateway.j2 dest=/tmp/event-gateway.yaml
     - command: kubectl apply -f /tmp/event-gateway.yaml

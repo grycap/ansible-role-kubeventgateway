@@ -30,6 +30,12 @@ spec:
             httpGet:
               path: "/v1/status"
               port: 4001
+{% if master_deploy %}
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+{% endif %}
 ---
 apiVersion: v1
 kind: Service
