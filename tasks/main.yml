@@ -6,7 +6,7 @@
 
 - name: Create etcd statefulset and service
   block:
-    - copy: src=etcd.yaml dest=/tmp/etcd.yaml
+    - template: src=etcd.j2 dest=/tmp/etcd.yaml
     - command: kubectl apply -f /tmp/etcd.yaml
 
 - name: Create event-gateway deployment and service

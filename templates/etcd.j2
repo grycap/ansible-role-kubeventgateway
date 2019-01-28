@@ -35,6 +35,12 @@ spec:
           volumeMounts:
             - name: etcd-data
               mountPath: /var/lib/etcd
+{% if master_deploy %}
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+{% endif %}
   volumeClaimTemplates:
     - metadata:
         name: etcd-data
